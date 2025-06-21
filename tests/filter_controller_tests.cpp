@@ -1,9 +1,9 @@
+#define CATCH_CONFIG_MAIN
 #include "../exceptions/filter_controller_exceptions.h"
 #include "../filters/filter_controller.h"
 #include "../filters/filters.h"
 #include "../io_handlers/bmp_handler.h"
-
-#include <catch.hpp>
+#include "catch2/catch_test_macros.hpp"
 
 TEST_CASE("Valid") {
     CropFilter crop(0, 0);
@@ -15,7 +15,7 @@ TEST_CASE("Valid") {
     OctogonalizeFilter oct(1);
 
     std::string input_path =
-        "/home/user/ami-236-1-Ivan-Khmura-Vaneyk1973/tasks/image_processor/test_script/data/lenna.bmp";
+        "../data/lenna.bmp";
     BMP origin = BMPHandler::ReadFromFile(input_path);
 
     BMP expected_file = origin;
@@ -174,7 +174,7 @@ TEST_CASE("Valid") {
 
 TEST_CASE("Unsupported filter") {
     std::string input_path =
-        "../test_script/data/lenna.bmp";
+        "../data/lenna.bmp";
     BMP result_file = BMPHandler::ReadFromFile(input_path);
     std::vector<FilterArguments> arguments = {FilterArguments("-croap", {1000, 1000})};  // NOLINT
     FilterController controller(arguments);
@@ -210,7 +210,7 @@ TEST_CASE("Unsupported filter") {
 
 TEST_CASE("Invalid argument number") {
     std::string input_path =
-        "/home/user/ami-236-1-Ivan-Khmura-Vaneyk1973/tasks/image_processor/test_script/data/lenna.bmp";
+        "../data/lenna.bmp";
     BMP result_file = BMPHandler::ReadFromFile(input_path);
     std::vector<FilterArguments> arguments = {FilterArguments("-crop", {1000, 1000, 123})};  // NOLINT
     FilterController controller(arguments);
@@ -259,7 +259,7 @@ TEST_CASE("Invalid argument number") {
 
 TEST_CASE("Illigal argument") {
     std::string input_path =
-        "/home/user/ami-236-1-Ivan-Khmura-Vaneyk1973/tasks/image_processor/test_script/data/lenna.bmp";
+        "../data/lenna.bmp";
     BMP result_file = BMPHandler::ReadFromFile(input_path);
     std::vector<FilterArguments> arguments = {FilterArguments("-crop", {1000, -1000})};  // NOLINT
     FilterController controller(arguments);
