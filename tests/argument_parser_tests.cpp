@@ -1,7 +1,7 @@
 #include <catch.hpp>
 
 #include "../utils/argument_parser.h"
-#include "exceptions/argument_parser_exceptions.h"
+#include "../exceptions/argument_parser_exceptions.h"
 
 namespace {
 void TestWithArguments(const std::vector<FilterArguments> &expected_arguments, const std::string &expected_input_path,

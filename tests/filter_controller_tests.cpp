@@ -1,9 +1,7 @@
-
-
-#include "exceptions/filter_controller_exceptions.h"
-#include "filters/filter_controller.h"
-#include "filters/filters.h"
-#include "io_handlers/bmp_handler.h"
+#include "../exceptions/filter_controller_exceptions.h"
+#include "../filters/filter_controller.h"
+#include "../filters/filters.h"
+#include "../io_handlers/bmp_handler.h"
 
 #include <catch.hpp>
 
